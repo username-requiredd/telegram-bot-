@@ -20,10 +20,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="w-[375px] h-[667px] max-w-full max-h-full overflow-y-auto bg-white shadow-lg rounded-lg">
+          {children}
+        </div>
       </body>
     </html>
   );
