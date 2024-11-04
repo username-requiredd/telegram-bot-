@@ -1,6 +1,3 @@
-// app/api/sendToken/route.js (Next.js 13+ with the app router)
-// or pages/api/sendToken.js (for older versions)
-
 import {
   Connection,
   PublicKey,
