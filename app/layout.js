@@ -23,8 +23,8 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="w-[375px] h-[667px] max-w-full max-h-full overflow-y-auto bg-white shadow-lg rounded-lg">
+      <body className="">
+        <div className="bg-gray-900">
           {children}
         </div>
       </body>
