@@ -4,12 +4,12 @@ import QrCode from "qrcode";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 
-const ReceiveScreen = ({ walletAddress }) => {
+const ReceiveScreen = () => {
   const [loading, setLoading] = useState(false);
   const [qrCodeData, setQrCodeData] = useState(null);
   const SIZE = 200;
 
-  // const walletAddress = "J78ydsvvKnJuCSQLotuu3ScDKBfncb59cbFE461aTKYp";
+  const walletAddress = "J78ydsvvKnJuCSQLotuu3ScDKBfncb59cbFE461aTKYp";
 
   (async function () {
     const qrCodeDataUrl = await QrCode.toDataURL(walletAddress, {
