@@ -4,5 +4,5 @@ import TopMovers from "../components/screens/TopMovers";
 import ReceiveScreen from "../components/screens/ReceiveScreen";
 import Intro from "../components/onboardingandintro/intro1.jsx";
 export default function Test() {
-  return <Intro />;
+  return <TopMovers />;
 }

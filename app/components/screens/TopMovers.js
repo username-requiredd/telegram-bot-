@@ -75,7 +75,7 @@ export default function TopMovers() {
   ];
   return (
     <div className="relative mt-32">
-      <div className="fixed top-0 w-full p-4 bg-gray-100">
+      <div className="fixed top-0 w-full p-4 bg-gray-800 dark:text-white">
         <div className="flex items-center mb-4 ">
           <i className="fas fa-arrow-left text-black mr-4"></i>
           <h1 className="text-xl font-bold">Top movers</h1>
@@ -93,7 +93,7 @@ export default function TopMovers() {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex items-center justify-between p-2 mb-2 dark:bg-gray-900 rounded-md"
+            className="flex items-center justify-between p-2 mb-2 border-b-2 dark:bg-gray-900 rounded-md"
           >
             <div className="flex items-center">
               <img
