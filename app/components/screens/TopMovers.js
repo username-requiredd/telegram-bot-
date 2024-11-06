@@ -74,12 +74,13 @@ export default function TopMovers() {
     },
   ];
   return (
-    <div className="p-4">
-      <div className="flex items-center mb-4">
-        <i className="fas fa-arrow-left text-white mr-4"></i>
+    <div className="relative mt-32">
+      <div className="fixed top-0 w-full p-4 bg-gray-100">
+      <div className="flex items-center mb-4 ">
+        <i className="fas fa-arrow-left text-black mr-4"></i>
         <h1 className="text-xl font-bold">Top movers</h1>
       </div>
-      <div className="relative mb-4">
+      <div className="relative mb-4 w-full">
         <input
           type="text"
           placeholder="Search Token"
@@ -87,7 +88,8 @@ export default function TopMovers() {
         />
         <i className="fas fa-search absolute left-3 top-3 text-gray-400"></i>
       </div>
-      <div>
+      </div>
+      <div className="p-4 scroll-smooth focus:scroll-auto">
         {data.map((item, index) => (
           <div
             key={index}
