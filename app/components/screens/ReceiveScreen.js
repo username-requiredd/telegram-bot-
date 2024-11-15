@@ -4,7 +4,7 @@ import QrCode from "qrcode";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 
-const ReceiveScreen = () => {
+const ReceiveScreen = ({ changeUistate }) => {
   const [loading, setLoading] = useState(false);
   const [qrCodeData, setQrCodeData] = useState(null);
   const SIZE = 200;
@@ -38,7 +38,9 @@ const ReceiveScreen = () => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-between py-4">
       <div className="flex items-center w-full px-4 py-2">
-        <i className="fas fa-arrow-left dark:text-white text-2xl"></i>
+        <button onClick={() => changeUistate("dashboard")}>
+          <i className="fas fa-arrow-left dark:text-white text-2xl"></i>
+        </button>
         <h1 className="dark:text-white text-xl font-semibold ml-4">Receive</h1>
       </div>
       <div className="flex flex-col items-center w-full space-y-8">

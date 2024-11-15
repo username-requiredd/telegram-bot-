@@ -1,4 +1,4 @@
-export default function SwapScreen() {
+export default function SwapScreen({ changeUistate }) {
   const currencies = [
     { code: "BTC", name: "Bitcoin" },
     { code: "ETH", name: "Ethereum" },
@@ -6,7 +6,7 @@ export default function SwapScreen() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between min-h-screen py-10">
+    <div className="flex flex-col items-center dark:text-white justify-between min-h-screen py-4">
       <div className="flex flex-col items-center">
         <h1 className="text-xl font-semibold mb-6">Swap</h1>
         <div className="w-80 p-4 rounded-lg mb-8 border-2">

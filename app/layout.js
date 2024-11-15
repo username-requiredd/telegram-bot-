@@ -1,5 +1,4 @@
 import localFont from "next/font/local";
-import NavBar from "./components/ui/Navbar";
 import { Toaster } from "react-hot-toast";
 
 import "./globals.css";
@@ -35,7 +34,6 @@ export default function RootLayout({ children }) {
         {/* <WalletProvider> */}
         <Toaster position="top-center" />
         {children}
-        <NavBar />
         {/* </WalletProvider> */}
       </body>
     </html>
