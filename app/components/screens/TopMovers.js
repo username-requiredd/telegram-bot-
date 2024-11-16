@@ -1,100 +1,98 @@
-"use client";
+"use client"
+import Link from "next/link";
+import { useState, useEffect } from "react"
 
-import { useState } from "react";
-
-export default function TopMovers({ changeUistate }) {
-  const [tokens, setTokens] = useState([
+const TopMovers = ({ searchQuery = "" }) => {
+  const [filteredData, setFilteredData] = useState([])
+  
+  const data = [
     {
-      symbol: "ADA",
-      name: "Cardano",
+      symbol: "BTC",
+      name: "Bitcoin",
       price: "3.00912",
       change: "($12.09)",
       percentage: "(+0.68%)",
-      icon: "https://ipfs.io/ipfs/QmRpRYk17jEQcpXWVcUgX3cuLvi9HpkiMdLtBQBrh769Xg",
-      chart: "https://placehold.co/64x32?text=Chart",
+      icon: "/api/placeholder/32/32",
+      chart: "/api/placeholder/64/32",
     },
-  ]);
-  const url = "https://tokens.jup.ag/tokens_with_markets";
+    {
+      symbol: "ETH",
+      name: "Ethereum",
+      price: "3.00912",
+      change: "($12.09)",
+      percentage: "(+0.68%)",
+      icon: "/api/placeholder/32/32",
+      chart: "/api/placeholder/64/32",
+    },
+    {
+      symbol: "BNB",
+      name: "Binance",
+      price: "3.00912",
+      change: "($12.09)",
+      percentage: "(+0.68%)",
+      icon: "/api/placeholder/32/32",
+      chart: "/api/placeholder/64/32",
+    },
+    {
+      symbol: "MATIC",
+      name: "Polygon",
+      price: "3.00912",
+      change: "($12.09)",
+      percentage: "(+0.68%)",
+      icon: "/api/placeholder/32/32",
+      chart: "/api/placeholder/64/32",
+    },
+  ];
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: "GET",
-
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Access-Control-Allow-Origin": "*",
-
-  //         Referer: "https://yourwebsite.com",
-  //       },
-  //     });
-
-  //     if (!response.ok) {
-  //       console.error(`HTTP error! status: ${response.status}`);
-  //       return;
-  //     }
-
-  //     const data = await response.json();
-
-  //     console.log(data);
-  //     setTokens(data);
-  //   } catch (error) {
-  //     console.error("Error fetching tradable tokens:", error);
-  //   }
-  // };
-
-  // fetchData();
+  useEffect(() => {
+    const filtered = data.filter(item => 
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.symbol.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    setFilteredData(filtered)
+  }, [searchQuery])
 
   return (
-    <div className="relative mt-32">
-      <div className="fixed top-0 w-full p-4 bg-gray-800 dark:text-white">
-        <div className="flex items-center mb-4 ">
-          <button onClick={() => changeUistate("dashboard")}>
-            <i className="fas fa-arrow-left text-black dark:text-white mr-4"></i>
-          </button>
-          <h1 className="text-xl font-bold">Top movers</h1>
-        </div>
-        <div className="relative mb-4 w-full">
-          <input
-            type="text"
-            placeholder="Search Token"
-            className="w-full p-2 pl-10 dark:bg-gray-800 dark:text-white rounded-md"
-          />
-          <i className="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-        </div>
-      </div>
-      <div className="p-4 scroll-smooth focus:scroll-auto">
-        {tokens.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between p-2 mb-2 border-b-2 dark:bg-gray-900 rounded-md"
-          >
-            <div className="flex items-center">
-              <img
-                src={item.icon}
-                alt={`${item.symbol} icon`}
-                className="w-8 h-8 mr-4"
-              />
-              <div>
-                <div className="font-bold dark:text-gray-400">
-                  {item.symbol}
+    <div className="max-w-2xl mx-auto ">
+      {/* Token List */}
+      <div className="space-y-4 py-4">
+        {filteredData.length > 0 ? (
+          filteredData.map((item, index) => (
+            <Link 
+              key={index}
+              href={`/${item.name.toLowerCase()}`}
+              className="block"
+            >
+              <div className="flex items-center justify-between p-4 bg-gray-800 rounded-xl hover:bg-gray-700 transition-colors">
+                {/* Token Info */}
+                <div className="flex items-center space-x-3">
+                  <img
+                    src={item.icon}
+                    alt={item.symbol}
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <div>
+                    <h3 className="font-medium text-white">{item.symbol}</h3>
+                    <p className="text-sm text-gray-400">{item.name}</p>
+                  </div>
                 </div>
-                <div className="dark:text-gray-400">{item.name}</div>
+
+                {/* Price Info */}
+                <div className="text-right">
+                  <p className="text-white font-medium">{item.price}</p>
+                  <p className="text-green-500 text-sm">{item.percentage}</p>
+                </div>
               </div>
-            </div>
-            <img
-              src={item.chart}
-              alt={`${item.symbol} chart`}
-              className="w-16 h-8 mx-4"
-            />
-            <div className="text-right">
-              <div className="font-bold dark:text-gray-400">{item.price}</div>
-              <div className="text-gray-400">{item.change}</div>
-              <div className="text-green-500">{item.percentage}</div>
-            </div>
+            </Link>
+          ))
+        ) : (
+          <div className="text-center py-10">
+            <p className="text-gray-400">{`No tokens found matching "${searchQuery}"`}</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
-  );
+  )
 }
+
+export default TopMovers
