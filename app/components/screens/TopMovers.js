@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import Link from "next/link";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 const TopMovers = ({ searchQuery = "" }) => {
-  const [filteredData, setFilteredData] = useState([])
-  
+  const [filteredData, setFilteredData] = useState([]);
+
   const data = [
     {
       symbol: "BTC",
@@ -45,12 +45,13 @@ const TopMovers = ({ searchQuery = "" }) => {
   ];
 
   useEffect(() => {
-    const filtered = data.filter(item => 
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.symbol.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    setFilteredData(filtered)
-  }, [searchQuery])
+    const filtered = data.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.symbol.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filtered);
+  }, [searchQuery]);
 
   return (
     <div className="max-w-2xl mx-auto ">
@@ -58,7 +59,7 @@ const TopMovers = ({ searchQuery = "" }) => {
       <div className="space-y-4 py-4">
         {filteredData.length > 0 ? (
           filteredData.map((item, index) => (
-            <Link 
+            <Link
               key={index}
               href={`/${item.name.toLowerCase()}`}
               className="block"
@@ -92,7 +93,7 @@ const TopMovers = ({ searchQuery = "" }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopMovers
+export default TopMovers;
