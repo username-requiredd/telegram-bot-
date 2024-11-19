@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <head>
         <script
           src="https://kit.fontawesome.com/e474bb5167.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>

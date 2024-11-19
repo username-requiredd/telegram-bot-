@@ -6,6 +6,10 @@ import TopMovers from "./components/screens/TopMovers";
 import NavBar from "./components/ui/Navbar";
 import ReceiveScreen from "./components/screens/ReceiveScreen";
 import SwapScreen from "./components/screens/SwapScreen";
+import Market from "./components/screens/market";
+import Menu from "./components/screens/menu";
+import Send from "./components/screens/transactions/send";
+import Assets from "./components/screens/assets";
 
 const Home = () => {
   const [uistate, setUistate] = useState("dashboard");
@@ -23,10 +27,16 @@ const Home = () => {
         return <TopMovers />;
       case "receive":
         return <ReceiveScreen changeUistate={changeUistate} />;
-      case "swap":
+      case "trade":
         return <SwapScreen changeUistate={changeUistate} />;
       case "send":
-        return <Dashboard changeUistate={changeUistate} />;
+        return <Send changeUistate={changeUistate} />;
+      case "market":
+        return <Market changeUistate={changeUistate} />;
+      case "menu":
+        return <Menu changeUistate={changeUistate} />;
+      case "assets":
+        return <Assets changeUistate={changeUistate} />;
       default:
         return <Dashboard changeUistate={changeUistate} />;
     }
@@ -35,7 +45,7 @@ const Home = () => {
   return (
     <>
       {renderContent()}
-      <NavBar changeUistate={changeUistate} />
+      <NavBar changeUistate={changeUistate} uistate={uistate} />
     </>
   );
 };
