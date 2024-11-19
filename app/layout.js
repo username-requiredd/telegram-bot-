@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import { Toaster } from "react-hot-toast";
-
+import NavBar from "./components/ui/Navbar";
 import "./globals.css";
 // import { WalletProvider } from "./contexts/walletContext";
 
