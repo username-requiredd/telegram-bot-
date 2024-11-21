@@ -11,15 +11,15 @@ import { cn } from "@/lib/utils";
 
 export default function NavBar({ changeUistate, uistate }) {
   return (
-    <div className="w-full bg-gray-850 py-4 fixed bottom-2 border-t rounded-lg border-gray-800 backdrop-blur-lg shadow-2xl">
+    <div className="w-full bg-gray-850 py-4 fixed bottom-0 border-t rounded-lg border-gray-800 backdrop-blur-lg shadow-2xl">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex justify-around items-center px-4">
           <NavItem
             changeUistate={changeUistate}
-            href="home"
+            href="dashboard"
             icon={<Home size={24} />}
-            label="Home"
-            isActive={uistate === "home"}
+            label="dashboard"
+            isActive={uistate === "dashboard"}
           />
           <NavItem
             changeUistate={changeUistate}

@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Plus, Scan, Search } from "lucide-react";
+import { ArrowLeft, Plus, Scan, Search } from "lucide-react";
 import TransactionSuccessModal from "../../transactions";
 import AddressBook from "../../addressbook";
 
-const Send = () => {
+const Send = ({ changeUistate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,8 +12,13 @@ const Send = () => {
   return (
     <div className="max-w-2xl mx-auto text-white p-6 space-y-8">
       {/* Header Section */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight mb-8">Send</h1>
+      <div className="flex items-center w-full py-2 mb-4">
+        <button onClick={() => changeUistate("dashboard")}>
+          <ArrowLeft />
+        </button>
+        <h1 className="dark:text-white text-center text-xl font-semibold ml-4">
+          Send
+        </h1>
       </div>
 
       {/* Main Input Section */}

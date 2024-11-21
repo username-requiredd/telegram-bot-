@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ScanLine,
   Bell,
@@ -10,22 +10,38 @@ import {
   ArrowLeftRight,
   X,
 } from "lucide-react";
-import Header from "../header";
-// import Header from "./components/header";
 
-const Dashboard = ({ changeUistate }) => {
+import Header from "../header";
+import DashTokens from "../dashTokens";
+import toast from "react-hot-toast";
+import { useWallet } from "@/app/contexts/walletContext";
+import getKeypair from "@/app/actions/get-keypair";
+
+const Dashboard = ({ changeUistate, balance, tokens }) => {
   const [isOpen, setIsOpen] = useState(true);
+
+  const { privateKey, loadPrivateKey } = useWallet();
+
+  // if (!privateKey) {
+  //   savePrivateKey(
+  //     "4SHk1GSZjm9PymF3Q8jmv2GyGg9QwQWF1BEytdHJZCGFfHuZhne2JgEaGc7ryb1yUGA3deeu8H6qhRqY6Txr63me",
+  //     "passion"
+  //   );
+  // }
+
+  const keypair = getKeypair(loadPrivateKey());
+  const publicKey = keypair?.publicKey.toBase58();
 
   return (
     <>
-      <Header />
+      <Header address={publicKey?.toString()} />
       <div className="min-h-screen flex flex-col px-4 mb-5 ">
-        <div className="flex-1 flex flex-col items-center justify-center text-white px-4 py-8 md:px-8 md:py-12 lg:px-12 lg:py-16">
+        <div className="flex-1 flex flex-col items-center text-white">
           <div className=" bg-gray-800 mt-3 shadow-lg rounded-full p-5 mb-6">
             <DollarSign className="text-green-500 h-12 w-12" />
           </div>
           <h3 className="font-bold text-4xl mb-2 md:text-5xl lg:text-6xl">
-            $29393272
+            {balance}
           </h3>
           <p className="text-lg font-medium text-green-600 mb-8 md:text-xl lg:text-2xl">
             +4.5%
@@ -48,11 +64,15 @@ const Dashboard = ({ changeUistate }) => {
             </button>
             <button
               className="flex flex-col items-center"
-              onClick={() => changeUistate("swap")}
+              onClick={() => changeUistate("trade")}
             >
               <ArrowLeftRight className="text-green-500 h-8 w-8 mb-2" />
               <p className="text-gray-400 font-medium">Swap</p>
             </button>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-2 mt-6 w-full">
+            <DashTokens data={tokens} />
           </div>
         </div>
 

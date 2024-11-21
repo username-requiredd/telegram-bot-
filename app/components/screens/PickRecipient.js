@@ -1,3 +1,4 @@
+import { ArrowLeft, QrCodeIcon, Search } from "lucide-react";
 import Image from "next/image";
 export default function PickRecipient() {
   const users = [
@@ -30,7 +31,7 @@ export default function PickRecipient() {
   return (
     <div className="flex flex-col h-screen p-4">
       <div className="flex items-center mb-4">
-        <i className="fas fa-arrow-left text-white text-xl"></i>
+        <ArrowLeft />
         <h1 className="dark:text-white text-xl font-bold mx-auto">Send</h1>
       </div>
       <div className="flex-grow overflow-y-auto">
@@ -42,7 +43,7 @@ export default function PickRecipient() {
               placeholder="Enter recipient address"
               className="w-full dark:bg-gray-800 text-white p-3 rounded-md"
             />
-            <i className="fas fa-qrcode absolute right-3 top-3 text-green-500"></i>
+            <QrCodeIcon />
           </div>
           <button className="text-green-500 mt-2">
             + Add this to your address book
@@ -56,7 +57,7 @@ export default function PickRecipient() {
               placeholder="Search recipient"
               className="w-full dark:bg-gray-800 text-white p-3 rounded-md"
             />
-            <i className="fas fa-search absolute right-3 top-3 text-gray-500"></i>
+            <Search />
           </div>
           <div className="space-y-4">
             {users.map((user, index) => (

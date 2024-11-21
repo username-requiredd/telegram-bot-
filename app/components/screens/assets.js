@@ -1,8 +1,10 @@
+"use client";
 import { Search } from "lucide-react";
 import SearchBar from "../search";
 import TopMovers from "./TopMovers";
+import DashTokens from "../dashTokens";
 
-const Assets = () => {
+const Assets = ({ tokens }) => {
   return (
     <div className="max-w-2xl mx-auto text-white p-6 mb-16">
       {/* Header */}
@@ -35,8 +37,8 @@ const Assets = () => {
             </button>
           </div> */}
 
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-4">
-            <TopMovers />
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-2 mt-2 w-full">
+            <DashTokens data={tokens} />
           </div>
         </div>
 

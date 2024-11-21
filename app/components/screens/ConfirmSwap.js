@@ -1,3 +1,5 @@
+import { CopyIcon, HelpCircle, Infinity } from "lucide-react";
+
 export default function ConfirmSwap() {
   return (
     <div className="bg-black text-white rounded-lg p-4 w-80">
@@ -13,7 +15,7 @@ export default function ConfirmSwap() {
           <div className="text-sm text-gray-400">$3.00912</div>
         </div>
         <div className="text-center">
-          <i className="fas fa-exchange-alt text-2xl text-green-500"></i>
+          <Infinity />
         </div>
         <div className="text-center">
           <div className="bg-gray-800 rounded-full p-2 mb-2">
@@ -30,7 +32,7 @@ export default function ConfirmSwap() {
             <span className="text-sm">
               0x8dfu8dfj8ja8289d93dj9d3...00kdiwjd
             </span>
-            <i className="fas fa-copy text-green-500 ml-2"></i>
+            <CopyIcon />
           </div>
         </div>
         <div className="flex justify-between items-center mb-2">
@@ -39,7 +41,7 @@ export default function ConfirmSwap() {
             <span className="text-sm">
               0x8dfu8dfj8ja8289d93dj9d3...00kdiwjd
             </span>
-            <i className="fas fa-copy text-green-500 ml-2"></i>
+            <CopyIcon />
           </div>
         </div>
         <div className="flex justify-between items-center mb-2">
@@ -52,7 +54,7 @@ export default function ConfirmSwap() {
         </div>
       </div>
       <div className="bg-gray-800 text-center text-sm text-gray-400 p-2 rounded-lg mb-4">
-        <i className="fas fa-exclamation-circle text-green-500 mr-2"></i>
+        <HelpCircle />
         Please double check recipient address
       </div>
       <button className="bg-green-500 text-black font-semibold py-2 px-4 rounded-full w-full">

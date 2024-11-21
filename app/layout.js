@@ -2,7 +2,8 @@ import localFont from "next/font/local";
 import { Toaster } from "react-hot-toast";
 
 import "./globals.css";
-// import { WalletProvider } from "./contexts/walletContext";
+import { Flowbite } from "flowbite-react";
+import Providers from "./providers/wallet-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,20 +23,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
-        <script
-          src="https://kit.fontawesome.com/e474bb5167.js"
-          crossOrigin="anonymous"
-        ></script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="min-h-screen bg-gray-800">
-        {/* <WalletProvider> */}
-        <Toaster position="top-center" />
-        {children}
-        {/* </WalletProvider> */}
-      </body>
+      <Flowbite>
+        <body className="min-h-screen bg-gray-800">
+          <Toaster position="top-center" />
+          <Providers>{children}</Providers>
+        </body>
+      </Flowbite>
     </html>
   );
 }
