@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Sparkles, Award } from "lucide-react";
 import CryptoCard from "../card";
-import TopMovers from "./TopMovers";
+import TopMovers from "./cryptoList";
 
 const SectionHeader = ({ title, link }) => (
   <div className="flex items-center justify-between py-4 px-6">
@@ -27,7 +27,7 @@ const SectionHeader = ({ title, link }) => (
 
 const Market = () => {
   return (
-    <div className="min-h-screen bg-gray-900 mb-16">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
       <div className="bg-gradient-to-b from-green-500/10 to-transparent">
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -84,6 +84,12 @@ const Market = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div>
+        <p>Available Balance</p>
+        <h4>0.1235 BTC</h4>
+
       </div>
     </div>
   );

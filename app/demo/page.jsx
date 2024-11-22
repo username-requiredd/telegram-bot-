@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import { 
   ArrowDown, 
@@ -88,6 +89,7 @@ export default function SwapScreen({ changeUistate }) {
           Cryptocurrency Swap
         </h1>
 
+        {/* From Currency Block */}
         <div className="bg-gray-800 rounded-2xl p-6 mb-4">
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-400">You Pay</span>
@@ -107,6 +109,7 @@ export default function SwapScreen({ changeUistate }) {
           </div>
         </div>
 
+        {/* Swap Direction */}
         <div className="flex justify-center my-4">
           <div className="bg-gray-800 rounded-full p-2 inline-flex space-x-2">
             <ArrowDown className="text-green-500" />
@@ -114,6 +117,7 @@ export default function SwapScreen({ changeUistate }) {
           </div>
         </div>
 
+        {/* To Currency Block */}
         <div className="bg-gray-800 rounded-2xl p-6 mb-6">
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-400">You Receive</span>
@@ -133,10 +137,12 @@ export default function SwapScreen({ changeUistate }) {
           </div>
         </div>
 
+        {/* Conversion Rate */}
         <div className="text-center text-sm text-gray-400 mb-6">
           1 {fromCurrency} ≈ 1000 {toCurrency}
         </div>
 
+        {/* Swap Button */}
         <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-full text-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all transform hover:-translate-y-1 shadow-lg">
           Swap Now
         </button>

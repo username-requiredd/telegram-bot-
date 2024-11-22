@@ -2,7 +2,7 @@
 
 import { useState } from "react"; // Don't forget to import useState
 import Dashboard from "./components/screens/dashboard";
-import TopMovers from "./components/screens/TopMovers";
+import TopMovers from "./components/screens/cryptoList";
 import NavBar from "./components/ui/Navbar";
 import ReceiveScreen from "./components/screens/ReceiveScreen";
 import SwapScreen from "./components/screens/SwapScreen";
@@ -44,8 +44,12 @@ const Home = () => {
 
   return (
     <>
+      <div className=" mb-28">
       {renderContent()}
+
+      </div>
       <NavBar changeUistate={changeUistate} uistate={uistate} />
+
     </>
   );
 };

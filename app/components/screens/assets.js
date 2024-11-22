@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import SearchBar from "../search";
-import TopMovers from "./TopMovers";
+import TopMovers from "./cryptoList";
 
 const Assets = () => {
   return (
