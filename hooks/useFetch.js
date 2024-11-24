@@ -1,4 +1,3 @@
-// hooks/useCryptoData.js
 'use client';
 import { useState, useEffect } from 'react';
 
@@ -18,7 +17,7 @@ export const useCryptoData = (endpoint, params = {}) => {
                     ...params
                 }).toString();
 
-                const response = await fetch(`/api/gecko?${queryParams}`);
+                const response = await fetch(`/api/coins?${queryParams}`);
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
@@ -39,7 +38,6 @@ export const useCryptoData = (endpoint, params = {}) => {
     return { data, loading, error };
 };
 
-// Updated hook specifically for market data
 export const useMarketData = (currency = 'usd', perPage = 20) => {
     return useCryptoData('markets', {
         vs_currency: currency,

@@ -1,13 +1,11 @@
 "use client";
+
 import Link from "next/link";
 import { useState } from "react";
-import { useMarketData } from "@/hooks/useFetch";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
-const CryptoCard = ({ searchQuery = "" }) => {
-  const [currency] = useState("usd");
-  const { data, loading, error } = useMarketData(currency);
-
+const CoinList = ({ data = [], loading = false, error = null, searchQuery = "" }) => {
+  // Filter data based on the search query
   const filteredData =
     data?.filter(
       (item) =>
@@ -36,18 +34,16 @@ const CryptoCard = ({ searchQuery = "" }) => {
 
   return (
     <div className="max-w-4xl rounded-2xl shadow-xl overflow-hidden">
-      {/* Header */}
-
       {/* List of Tokens */}
       {filteredData.length > 0 ? (
         <div className="divide-y divide-gray-800">
           {filteredData.map((item, index) => (
             <Link
               key={item.id || index}
-              href={`/${item.name.toLowerCase()}`}
+              href={`/market/${item.name.toLowerCase()}`}
               className="block"
             >
-              <div className="py-4 flex items-center justify-between bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-700/50 hover:border-green-500/30 transition-all duration-200  my-2">
+              <div className="py-4 flex items-center justify-between bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-700/50 hover:border-green-500/30 transition-all duration-200 my-2">
                 {/* Token Info */}
                 <div className="flex items-center space-x-4">
                   <img
@@ -89,11 +85,11 @@ const CryptoCard = ({ searchQuery = "" }) => {
         </div>
       ) : (
         <div className="text-center py-12 bg-gray-850">
-          <p className="text-gray-400 text-lg">No cryptocurrencies found matching {searchQuery}</p>
+          <p className="text-gray-400 text-lg">No cryptocurrencies found matching "{searchQuery}"</p>
         </div>
       )}
     </div>
   );
 };
 
-export default CryptoCard;
+export default CoinList;

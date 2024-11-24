@@ -25,7 +25,7 @@ const CryptoChart = ({ coinId, days = '30', currency = 'USD' }) => {
             setLoading(true);
             setError(null);
 
-            const url = `/api/gecko/${coinId}`;
+            const url = `/api/coins/market-chart/${coinId}`;
             try {
                 const response = await fetch(url, { signal });
                 if (!response.ok) {
@@ -154,7 +154,7 @@ const CryptoChart = ({ coinId, days = '30', currency = 'USD' }) => {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2,
                             }).format(value),
-                            <span className="text-gray-400">Price</span>,
+                            // <span className="text-gray-400">Price</span>,
                         ]}
                         labelStyle={{ color: '#9CA3AF' }}
                     />
